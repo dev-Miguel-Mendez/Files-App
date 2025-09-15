@@ -1,6 +1,6 @@
 import './bootstrap'
 import express, {Express} from 'express';
-import { router } from './infrastructure/http/routers/user-router';
+import { router } from './infrastructure/http/routers/user-router.js';
 
 
 const app: Express = express() 
@@ -19,8 +19,8 @@ app.use('/api', router)
 
 
 
-
+const PORT = process.env.PORT || 3001 
 
 app.listen(3001, ()=>{
-    console.log('test');
+    console.log('Server is running on port: ' + PORT);
 })

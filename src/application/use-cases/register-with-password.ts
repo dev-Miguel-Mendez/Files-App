@@ -1,4 +1,4 @@
-import { UserRepository } from "../interfaces/user-repository-interface";
+import { UserRepository } from "../interfaces/user-repository-interface.js";
 
 export class RegisterWithPassword {
 

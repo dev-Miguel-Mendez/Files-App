@@ -1,9 +1,9 @@
 import {Router} from 'express'
-import { signup } from '../controllers/users/signup'
-import { validate } from '../middleware/validator'
+import { register } from '../controllers/users/register.js'
+import { validate } from '../middleware/validator.js'
 
 
 export const router = Router()
 
 
-router.post('/register/password', validate(signup))
+router.post('/register/password', validate(register))
