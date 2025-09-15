@@ -10,7 +10,7 @@ export const validate = (handler: Handler, zodSchema?: ZodObject)=>{
                 zodSchema.parse(req)
             }
 
-            await handler(req, res, next)
+            await handler(req, res, next) //¡ Careful with this next() function
 
 
         }catch(e){

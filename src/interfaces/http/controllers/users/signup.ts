@@ -14,6 +14,9 @@ export const signup = async(req: Request<{}, {}, RegisterRequestBody>, res: Resp
     
 
     
-    await registerWithPassword.execute(email, password)
+    const user = await registerWithPassword.execute(email, password)
+
+
+    return res.status(201).send({user})
 
 }
