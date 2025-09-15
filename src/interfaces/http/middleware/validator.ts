@@ -1,24 +1,21 @@
-import { NextFunction, Request, RequestHandler, Response } from "express"
+import { NextFunction, Request, Handler, Response } from "express"
 import { ZodObject } from "zod"
 
-export const validate = (handler: RequestHandler, zodSchema?: ZodObject)=>{
+export const validate = (handler: Handler, zodSchema?: ZodObject)=>{
 
-    return (req: Request, res: Response, next: NextFunction)=>{
+    return async (req: Request, res: Response, next: NextFunction)=>{
 
         try{
             if(zodSchema){
                 zodSchema.parse(req)
             }
 
-            handler(req, res, next)
+            await handler(req, res, next)
 
 
-            next()
         }catch(e){
             console.error(e);
-            
             next(e)
-
         }
     }
 }
