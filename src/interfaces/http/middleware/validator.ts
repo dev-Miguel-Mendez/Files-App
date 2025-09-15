@@ -1,7 +1,7 @@
 import { NextFunction, Request, RequestHandler, Response } from "express"
-import { AnyZodObject } from "zod/v3"
+import { ZodObject } from "zod"
 
-export const validate = (handler: RequestHandler, zodSchema?: AnyZodObject)=>{
+export const validate = (handler: RequestHandler, zodSchema?: ZodObject)=>{
 
     return (req: Request, res: Response, next: NextFunction)=>{
 
@@ -9,6 +9,9 @@ export const validate = (handler: RequestHandler, zodSchema?: AnyZodObject)=>{
             if(zodSchema){
                 zodSchema.parse(req)
             }
+
+            handler(req, res, next)
+
 
             next()
         }catch(e){
