@@ -1,7 +1,10 @@
 import { UserRepository } from "../../application/interfaces/user-repository-interface";
 
-class mongoUserRepository implements UserRepository {
+class MongoUserRepository implements UserRepository {
     async saveToPersistence (){
+
+        
+
 
         console.log('Saving to mongo');
         
@@ -10,4 +13,4 @@ class mongoUserRepository implements UserRepository {
 }
 
 
-export const mongoUserRepository = new mongoUserRepository
+export const mongoUserRepository = new MongoUserRepository()

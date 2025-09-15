@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { RegisterWithPassword } from '../../../../application/use-cases/register-with-password';
-import { mongoUserRepository } from '../../../persistence/mongo-user-repository';
 import { RegisterRequestBody } from '../../zod-schemas/users-schemas';
+import { mongoUserRepository } from '../../../persistence/mongo-user-repository';
 
 
 export const registerWithPassword = new RegisterWithPassword(mongoUserRepository)

@@ -7,7 +7,7 @@ export class RegisterWithPassword {
     ){}
 
 
-    async execute(userInfo: any){
+    async execute(email: string, password: string){
 
         this.userRepository.saveToPersistence();
         
