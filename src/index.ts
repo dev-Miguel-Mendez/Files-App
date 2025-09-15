@@ -1,6 +1,6 @@
 import './bootstrap'
 import express, {Express} from 'express';
-import { router } from './interfaces/http/routers/user-router';
+import { router } from './infrastructure/http/routers/user-router';
 
 
 const app: Express = express() 

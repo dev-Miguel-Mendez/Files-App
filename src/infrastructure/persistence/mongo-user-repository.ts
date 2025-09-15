@@ -7,7 +7,7 @@ const userCollection = new MongoClient(process.env.MONGODB_CONNECTION_URL!).db('
 class MongoUserRepository implements UserRepository {
     async saveToPersistence (email: string, password: string){
 
-        userCollection.insertOne({email, password})
+        await userCollection.insertOne({email, password})
 
 
         console.log('Saving to mongo');
