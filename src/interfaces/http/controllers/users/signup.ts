@@ -1,21 +1,19 @@
 import { Request, Response } from 'express';
 import { RegisterWithPassword } from '../../../../application/use-cases/register-with-password';
-import { prismaUserRepository } from '../../../persistence/prisma-user-repository';
+import { mongoUserRepository } from '../../../persistence/mongo-user-repository';
+import { RegisterRequestBody } from '../../zod-schemas/users-schemas';
 
 
-export const registerWithPassword = new RegisterWithPassword(prismaUserRepository)
+export const registerWithPassword = new RegisterWithPassword(mongoUserRepository)
 
 
-export const signup = async(req: Request, res: Response)=>{
+export const signup = async(req: Request<{}, {}, RegisterRequestBody>, res: Response)=>{
     
 
-    const {body} = req
+    const {email, password} = req.body
     
-    if(!body){ //? To validate
-        return res.status(400).send('No body')
-    }
 
     
-    await registerWithPassword.execute(body)
+    await registerWithPassword.execute(email, password)
 
 }

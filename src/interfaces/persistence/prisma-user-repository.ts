@@ -1,13 +1,13 @@
 import { UserRepository } from "../../application/interfaces/user-repository-interface";
 
-class PrismaUserRepository implements UserRepository {
+class mongoUserRepository implements UserRepository {
     async saveToPersistence (){
 
-        console.log('Saving to prisma');
+        console.log('Saving to mongo');
         
 
     }
 }
 
 
-export const prismaUserRepository = new PrismaUserRepository
+export const mongoUserRepository = new mongoUserRepository

@@ -6,3 +6,6 @@ export const registerRequestSchema = z.object({
         password: z.string().nonempty().email()
     })
 })
+
+
+export type RegisterRequestBody = z.infer<typeof registerRequestSchema>['body']
