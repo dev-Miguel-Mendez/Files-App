@@ -1,5 +1,5 @@
 export interface UserRepository {
     
-    saveToPersistence: ()=> Promise<any> 
+    saveToPersistence: (email: string, password: string)=> Promise<any> 
 
 }
