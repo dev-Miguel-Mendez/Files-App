@@ -11,7 +11,7 @@ export class RegisterWithPasswordService {
     async execute(email: string, password: string){
 
         const user = User.createUser(email, password)
-        await this.userRepository.saveToPersistence(user, true)
+        await this.userRepository.saveToPersistence(user.toObj(), true)
         
 
         return user

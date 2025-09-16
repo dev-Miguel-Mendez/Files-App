@@ -1,25 +1,27 @@
 import { randomUUID } from 'node:crypto';
 import { BadRequest } from './errors.js';
+import { UserPersistence } from '../application/interfaces/user-persistence.js';
 
 export class User {
-	private credits: number = 1000;
-
-	constructor(
-		private id: string,
+    
+    constructor(
+        private id: string,
 		private readonly email: string,
-		private readonly password: string
+		private readonly password: string,
+        private credits: number
 	) {}
 
 	//$ Factory.
 	static createUser(email: string, password: string): User {
-		return new User(randomUUID(), email, password);
+		return new User(randomUUID(), email, password, 1000);
 	}
 
-	toObj() {
+	toObj(): UserPersistence {
 		return {
 			id: this.id,
 			email: this.email,
 			password: this.password,
+            credits: this.credits
 		};
 	}
 
