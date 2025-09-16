@@ -9,11 +9,10 @@ export const registerWithPassword = new RegisterWithPassword(mongoUserRepository
 
 export const register = async(req: Request<{}, {}, RegisterRequestBody>, res: Response)=>{
     
-
     const {email, password} = req.body
     
     const user = await registerWithPassword.execute(email, password)
 
-    return res.status(201).send({message: 'User created with email: ' + user.toObj().email, success: true,})
-
+    return res.status(201).send({message: 'User created with email: ' + user.toObj().email, success: true})
+    
 }

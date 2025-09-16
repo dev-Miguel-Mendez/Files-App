@@ -1,6 +1,6 @@
 import './bootstrap'
 import express, {Express} from 'express';
-import { router } from './infrastructure/http/routers/user-router.js';
+import { router } from './infrastructure/http/routers/main-router.js';
 import { errorMiddleware } from './infrastructure/http/middleware/error-middleware.js';
 
 
