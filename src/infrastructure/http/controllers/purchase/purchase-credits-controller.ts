@@ -1,18 +1,26 @@
 import { Request, Response } from 'express';
 import { BadRequest } from '../../../../entities/errors.js';
+import { PurchaseCreditsService } from '../../../../application/use-cases/purchase-credits-success.js';
+import { paymentsSDK } from '../../../../lib/payments-sdk.js';
 
 
+const purchaseCreditsService = new PurchaseCreditsService()
 
-export const PurchaseCreditsService = async(req: Request, res: Response)=>{
+
+export const PurchaseCreditsController = async(req: Request, res: Response)=>{
     
     const purchaseType = req.url
     
-    if(!Object.keys(purchaseTypes).includes(purchaseType)){
-        throw new BadRequest('Invalid purchase type')
-    }
 
-    const purchaseAmount = purchaseTypes[purchaseType]
+    const checkoutURL = paymentsSDK.getCheckoutURL({
+        amount: 123,
+        currency: 'usd',
+        metadata: {
+            purchaseType
+        }
+    })
 
 
+    res.redirect(checkoutURL)
 
 }
