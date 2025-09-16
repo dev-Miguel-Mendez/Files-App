@@ -13,6 +13,12 @@ app.use(express.json())
 //? This will be logger middleware
 app.use((req, _res, next)=>{ console.log('New request to: ' + req.url); next()})
 
+
+//* TEST
+app.get('/', (_req, res)=>{
+    res.send('Test Completed')
+})
+
 app.use('/api', router)
 
 

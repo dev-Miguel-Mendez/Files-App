@@ -8,6 +8,7 @@ import { uploadSingleValidated } from '../middleware/multer.js'
 export const router = Router()
 
 
+
 router.post('/register/password', validate(register, registerRequestSchema))
 
 router.post('/upload-file', uploadSingleValidated, )
