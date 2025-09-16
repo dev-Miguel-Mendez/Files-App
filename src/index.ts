@@ -1,6 +1,7 @@
 import './bootstrap'
 import express, {Express} from 'express';
 import { router } from './infrastructure/http/routers/user-router.js';
+import { errorMiddleware } from './infrastructure/http/middleware/error-middleware.js';
 
 
 const app: Express = express() 
@@ -16,7 +17,7 @@ app.use('/api', router)
 
 
 
-
+app.use(errorMiddleware)
 
 
 const PORT = process.env.PORT || 3001 

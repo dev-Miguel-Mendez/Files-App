@@ -9,7 +9,7 @@ export class RegisterWithPassword {
 
     async execute(email: string, password: string){
 
-        this.userRepository.saveToPersistence(email, password);
+        await this.userRepository.saveToPersistence(email, password);
         
 
     }

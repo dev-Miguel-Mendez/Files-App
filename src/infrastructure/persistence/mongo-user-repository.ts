@@ -1,5 +1,6 @@
 import { MongoClient } from "mongodb";
 import { UserRepository } from "../../application/interfaces/user-repository-interface.js";
+import { BadRequest } from "../../entities/errors.js";
 
 
 
@@ -19,12 +20,14 @@ class MongoUserRepository implements UserRepository {
 
     async saveToPersistence (email: string, password: string){
 
-        console.log('Saving to mongo');
+        console.log('Saving to mongo...');
 
-        const existing = this.userCollection.findOne({email})
+        const existing = await this.userCollection.findOne({email})
 
 
-        if(existing){}
+        if(existing){
+            throw new BadRequest('User already exists (email)')
+        }
 
         await this.userCollection.insertOne({email, password})
         

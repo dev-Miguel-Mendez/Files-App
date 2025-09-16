@@ -14,6 +14,9 @@ export const validate = (handler: Handler, zodSchema?: ZodObject)=>{
 
 
         }catch(e){
+            
+
+
             console.error(e);
             next(e)
         }

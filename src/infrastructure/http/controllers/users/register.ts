@@ -12,10 +12,7 @@ export const register = async(req: Request<{}, {}, RegisterRequestBody>, res: Re
 
     const {email, password} = req.body
     
-
-    
     const user = await registerWithPassword.execute(email, password)
-
 
     return res.status(201).send({user})
 
