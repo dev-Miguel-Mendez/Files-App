@@ -1,3 +1,4 @@
+import { User } from "../../entities/user.js";
 import { UserRepository } from "../interfaces/user-repository-interface.js";
 
 export class RegisterWithPassword {
@@ -9,8 +10,11 @@ export class RegisterWithPassword {
 
     async execute(email: string, password: string){
 
-        await this.userRepository.saveToPersistence(email, password);
+        const user = User.createUser(email, password)
+        await this.userRepository.saveToPersistence(user)
         
+
+        return user
 
     }
 

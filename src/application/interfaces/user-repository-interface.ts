@@ -1,5 +1,7 @@
+import { User } from "../../entities/user.js";
+
 export interface UserRepository {
     
-    saveToPersistence: (email: string, password: string)=> Promise<any> 
+    saveToPersistence: (user: User)=> Promise<any> 
 
 }

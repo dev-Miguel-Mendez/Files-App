@@ -14,6 +14,6 @@ export const register = async(req: Request<{}, {}, RegisterRequestBody>, res: Re
     
     const user = await registerWithPassword.execute(email, password)
 
-    return res.status(201).send({user})
+    return res.status(201).send({message: 'User created with email: ' + user.toObj().email, success: true,})
 
 }
