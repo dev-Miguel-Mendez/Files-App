@@ -12,13 +12,21 @@ class MongoUserRepository implements UserRepository {
 
     private userCollection = filesAppDB.collection<UserPersistence>('users')
 
+    
+    async findById (id: string){
+        
+        const userDoc = await this.userCollection.findOne({id})
+        
+        if(!userDoc){
+            throw new BadRequest('User not found')
+        }
+        
+        return new User(userDoc.id, userDoc.email, userDoc.password, userDoc.credits)
+        
+    }
+
     async saveToPersistence (doc: UserPersistence, isNew: boolean){
-
-
-        console.log('Saving to mongo...');
-
         const existing = await this.userCollection.findOne({email: doc.email})
-
 
         if(existing){
             throw new BadRequest('User already exists (email)')
@@ -27,25 +35,11 @@ class MongoUserRepository implements UserRepository {
         if(isNew){
             await this.userCollection.insertOne(doc)
         }
+
+        //? Add "replaceOne" to update.
+
+        console.log('SAVED TO MONGO: ', doc);
     }
-
-    async findById (id: string){
-        
-
-
-        const userDoc = await this.userCollection.findOne({id})
-
-        if(!userDoc){
-            throw new BadRequest('User not found')
-        }
-
-        return new User(userDoc.id, userDoc.email, userDoc.password, userDoc.credits)
-
-    }
-
-
-    
-
 
 }
 
