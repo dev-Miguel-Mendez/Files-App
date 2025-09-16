@@ -1,6 +1,7 @@
 import { BadRequest } from "../../entities/errors.js"
 
 
+//? This will be called after a success webhook
 
 export class PurchaseCreditsSuccessService {
     
@@ -14,8 +15,8 @@ export class PurchaseCreditsSuccessService {
         if(!Object.keys(this.purchaseTypes).includes(purchaseType)){
             throw new BadRequest('Invalid purchase type')
         }
-        
-        
     }
+
+
     
 }
