@@ -1,5 +1,5 @@
 import {Router} from 'express'
-import { register } from '../controllers/users/register.js'
+import { register } from '../controllers/users/register-controller.js'
 import { validate } from '../middleware/validator.js'
 import { registerRequestSchema } from '../zod-schemas/users-schemas.js'
 import { uploadSingleValidated } from '../middleware/multer.js'

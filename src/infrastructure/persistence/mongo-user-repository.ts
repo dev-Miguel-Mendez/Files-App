@@ -19,7 +19,7 @@ class MongoUserRepository implements UserRepository {
 
     private userCollection = mongoClient.db('files-app').collection('users')
 
-    async saveToPersistence (user: User){
+    async saveToPersistence (user: User, isNew: boolean){
 
 
         const doc = user.toObj()
@@ -34,9 +34,10 @@ class MongoUserRepository implements UserRepository {
             throw new BadRequest('User already exists (email)')
         }
 
+        if(isNew){
+            await this.userCollection.insertOne(doc)
+        }
 
-
-        await this.userCollection.insertOne(doc)
         
 
     }
